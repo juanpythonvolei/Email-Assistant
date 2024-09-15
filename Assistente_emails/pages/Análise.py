@@ -19,6 +19,7 @@ if usuario:
         if data:
             dia = str(data).split('-')
             for info in carregar_emails(email = usuario,password = st.secrets["EMAIl"],host='imap.gmail.com',data_informar=data):
+                    st.write(info)
                     if int(info['data'][4:7]) == int(dia[2]):
                         contador_emails += 1 
                         try:
@@ -43,8 +44,7 @@ if usuario:
                 st.metric(label='E-mails não carregados',value=contador_emails_nao_lidos)
             for resposta in list(set(lista_vizualizar)):
                 st.info(resposta)
-                st.divider()
-            st.write(lista_vizualizar)    
+                st.divider()    
             sim = st.popover('Vizualizar E-mails não lidos')
             with sim:
                 for item in lista_vizualizar_depois:
