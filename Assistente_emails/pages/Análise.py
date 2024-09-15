@@ -1,5 +1,5 @@
 import streamlit as st 
-from emails_gmail import carregar_emails,detalhes
+from emails_gmail import carregar_emails,detalhes,baixar_emails
 from analise_emails import analisar_email
 
 
@@ -71,3 +71,5 @@ if usuario:
                       ver_anexo = st.popover('Vizualizar Anexos')
                       with ver_anexo:
                               st.info(lista_anexos[0])
+                              baixar_emails(lista_anexos[0])
+                              
