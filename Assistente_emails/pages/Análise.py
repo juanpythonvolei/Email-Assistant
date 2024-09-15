@@ -53,6 +53,9 @@ if usuario:
                 st.metric(label='E-mails não carregados',value=contador_emails_nao_lidos)
             for resposta in list(set(lista_vizualizar)):
                 st.info(resposta)
+                ver_anexo = st.popover('Vizualizar Anexos')
+                with ver_anexo:
+                              baixar_emails(usuario)    
                 st.divider()    
 
             if len(lista_vizualizar_depois) > 0:
@@ -67,7 +70,5 @@ if usuario:
                                 st.divider()
                             except:
                                     pass
-            ver_anexo = st.popover('Vizualizar Anexos')
-            with ver_anexo:
-                              baixar_emails(usuario)
+            
                               
