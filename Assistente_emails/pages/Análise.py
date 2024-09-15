@@ -8,7 +8,7 @@ GOOGLE_API_KEY = st.secrets["GOOGLE"]
 
 
 contador_emails = 0
-contador_remetentes = 0
+contador_remetentes = []
 contador_emails_nao_lidos = 0
 lista_vizualizar_depois = []
 lista_vizualizar = []
@@ -30,15 +30,15 @@ if usuario:
                 dia = str(data).split('-')
                 data_remetente = remetente['data']
                 if int(dia[2]) == int(data_remetente[4:7]):
-                    if remetente['remetente'] in lista_remetentes:
+                    if remetente['remetente'] in contador_remetentes:
                         pass
                     else:
-                        lista_remetentes.append(remetente['remetente'])
+                        contador_remetentes.append(remetente['remetente'])
             col1,col2,col3 = st.columns(3)     
             with col1:
                 st.metric(label='Total de E-mails',value=contador_emails)
             with col2:
-                st.metric(label='Total de Remetentes',value=contador_remetentes)
+                st.metric(label='Total de Remetentes',value=len(contador_remetentes))
             with col3:
                 st.metric(label='E-mails não carregados',value=contador_emails_nao_lidos)
             for resposta in list(set(lista_vizualizar)):
