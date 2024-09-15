@@ -7,19 +7,28 @@ from analise_emails import analisar_email
 GOOGLE_API_KEY = st.secrets["GOOGLE"]
 
 
-contador_emails = 0
-contador_remetentes = []
-contador_emails_nao_lidos = 0
-lista_vizualizar_depois = []
-lista_vizualizar = []
-lista_remetentes = []
+
 usuario = st.text_input(label='',placeholder='Insira seu gmail',key='analise')
 if usuario:
         data = st.date_input(value=None,label='Insira uma data',key='data_analise')
         if data:
+            contador_emails = 0
+            contador_remetentes = []
+            contador_emails_nao_lidos = 0
+            lista_vizualizar_depois = []
+            lista_vizualizar = []
+            lista_remetentes = []
+            lista_anexos  = []    
             dia = str(data).split('-')
             for info in carregar_emails(email = usuario,password = st.secrets["EMAIl"],host='imap.gmail.com',data_informar=data):
-                    st.write(info)
+                    try:
+                           anexo =  info['anexo'][0]
+                           if anexo in lista_anexos:
+                                   pass
+                           else:
+                                   lista_anexos.append(anexo)
+                    except:
+                            pass
                     if int(info['data'][4:7]) == int(dia[2]):
                         contador_emails += 1 
                         try:
@@ -45,13 +54,20 @@ if usuario:
             for resposta in list(set(lista_vizualizar)):
                 st.info(resposta)
                 st.divider()    
-            sim = st.popover('Vizualizar E-mails não lidos')
-            with sim:
-                for item in lista_vizualizar_depois:
-                    try:
-                        data_analise = str(item).split('Data')
-                        print(data_analise)
-                        st.info(analisar_email(key=GOOGLE_API_KEY,pergunta=f'Você está recebendo emails. Por favor, resuma as informações dos emails e apresente uma resposta com tom formal. seguem os emails {item}'))
-                        st.divider()
-                    except:
+
+            if len(lista_vizualizar_depois) >:
+                    sim = st.popover('Vizualizar E-mails não lidos')
+                        
+                    with sim:
+                        for item in lista_vizualizar_depois:
+                            try:
+                                data_analise = str(item).split('Data')
+                                print(data_analise)
+                                st.info(analisar_email(key=GOOGLE_API_KEY,pergunta=f'Você está recebendo emails. Por favor, resuma as informações dos emails e apresente uma resposta com tom formal. seguem os emails {item}'))
+                                st.divider()
+                            except:
                         pass
+              if len(lista_anexos) > 0:
+                      ver_anexo = st.popover('Vizualizar Anexos')
+                      with ver_anexo:
+                              st.info(lista_anexo[0])
