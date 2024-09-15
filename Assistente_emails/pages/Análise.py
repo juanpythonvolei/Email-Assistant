@@ -61,7 +61,7 @@ if usuario:
                         else:
                                 lista_anexos.append(anexo)
                 with ver_anexo:
-                        download = st.download_button(label="Faça o download do anexo aqui",data=lambda file[0]['conteudo': for file in lista_anexos,file_name=f"{nome_arquivo}",mime=f"{tipo}")                                                                                            
+                        download = st.download_button(label="Faça o download do anexo aqui",data=lambda file[0]['conteudo']: for file in lista_anexos,file_name=f"{nome_arquivo}",mime=f"{tipo}")                                                                                            
                         if download:
                                 st.success('Arquivo excel baixado com sucesso')
                                 st.divider()    
