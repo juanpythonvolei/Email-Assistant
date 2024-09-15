@@ -1,5 +1,5 @@
 import streamlit as st 
-from emails_gmail import carregar_emails,detalhes,remetentes
+from emails_gmail import carregar_emails,detalhes,remetentes,enviar_email
 from analise_emails import analisar_email
 
 
@@ -29,12 +29,16 @@ if email:
                 st.title("E-mails a responder")
                 for item in lista_dados:
                         st.info(item['info'])
-                        st.text_input(label='',placeholder='Insira a sua mensagem',key=key)
+                        resposta = st.text_input(label='',placeholder='Insira a sua mensagem',key=key)
                         st.divider()
                         conteudo = st.popover('Vizualizar Conteúdo')
                         with conteudo:
                                st.info(item['email'])
                         key +=1
+                        if resposta:
+                               enviar_email(email=email,senha=st.secrets["EMAIl"],destinatario=pesquisa_email,conteudo=resposta,assunto='Resposta a mensagem')
+                               st.success("Email enviado com sucesso")
+                               
                         
                
 
