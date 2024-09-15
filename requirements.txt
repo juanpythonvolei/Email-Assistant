@@ -1,5 +1,4 @@
-imap_tools==1.7.2
-imbox==0.9.8
+
 protobuf==3.20.3
 streamlit==1.36.0
 certifi
@@ -16,4 +15,4 @@ google-generativeai
 streamlit-option-menu
 streamlit-calendar
 streamlit_carousel
-distutils
+
