@@ -1,5 +1,5 @@
 from imbox import Imbox
-from datetime import datetime
+from datetime import datetime,date
 from imap_tools import MailBox, AND
 import smtplib
 from email.mime.text import MIMEText
@@ -121,6 +121,21 @@ def carregar_emails_nao_lidos(host,email,password,data_informar):
         return lista_nao_lidos
 
 def baixar_emails(arquivo):
-    download = st.download_button(label="Faça o download do anexo aqui",data=arquivo,file_name=f"{arquivo}",mime="pdf")                                                                                            
-    if download:
-            st.success('Arquivo excel baixado com sucesso')
+        lista_anexos = []
+        data_hoje = date.today()
+        meu_email = MailBox('imap.gmail.com').login(email, senha)
+        lista_emails = meu_email.fetch(AND(date=data_hoje))
+        
+        for email in lista_emails:
+            for anexo in email.attachments:
+                nome_arquivo = anexo.filename
+                conteudo_arquivo = anexo.payload
+                lista_anexos.append(conteudo_arquivo)
+                
+                    
+        download = st.download_button(label="Faça o download do anexo aqui",data=arquivo,file_name=f"{arquivo}",mime="pdf")                                                                                            
+        if download:
+            payload in lista_Anexos:
+                with open(nome_arquivo, 'wb') as arquivo:
+                    arquivo.write(payload)
+                st.success('Arquivo excel baixado com sucesso')
