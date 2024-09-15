@@ -19,7 +19,7 @@ def carregar_emails(host,email,password,data_informar):
         Data: {msg.date}'''
                 texto  = f'''{descricao}\n
     {conteudo}'''
-                if msg.attachments:
+                if len(msg.attachments) >0:
                     lista_anexos = []
                     for anexo in msg.attachments:
                         arquivo = anexo.get('filename')
