@@ -55,7 +55,7 @@ if usuario:
                 st.info(resposta)
                 st.divider()    
 
-            if len(lista_vizualizar_depois) >:
+            if len(lista_vizualizar_depois) > 0:
                     sim = st.popover('Vizualizar E-mails não lidos')
                         
                     with sim:
