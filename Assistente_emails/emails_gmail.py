@@ -24,7 +24,7 @@ def carregar_emails(host,email,password,data_informar):
                     for anexo in msg.attachments:
                         with open(anexo.get('filename'),'wb') as arquivo:
                             arquivo.write(anexo.get('content'))
-                        lista_anexos.append(arquivo)
+                            lista_anexos.append(arquivo)
                     dict_email = {'texto':texto,'data':msg.date,'anexo':lista_anexos}
                 else:
                     dict_email = {'texto':texto,'data':msg.date}
