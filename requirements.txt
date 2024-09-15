@@ -1,14 +1,14 @@
 
-protobuf==3.20.3
-streamlit==1.36.0
 certifi
 firebase_admin
 folium
 geopy
 ipython
 pandas
+protobuf
 PyPDF2
 st_circular_progress
+streamlit
 tkcalendar
 xmltodict
 google-generativeai
