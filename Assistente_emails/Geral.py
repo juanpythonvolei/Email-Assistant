@@ -5,12 +5,12 @@ from analise_emails import analisar_email
 
 
 
-
+tab1,tab2 = st.tabs(['Email caixa de entrada','Não lidos'])
 usuario = st.text_input(label='',placeholder='Insira seu gmail')
 if usuario:
         data = st.date_input(value=None,label='Insira uma data')
         if data:
-            tab1,tab2 = st.tabs(['Email caixa de entrada','Não lidos'])
+            
             if tab1:
                 dia = str(data).split('-')
                 for info in carregar_emails(email = usuario,password = st.secrets["EMAIl"],host='imap.gmail.com',data_informar=data):
