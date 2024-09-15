@@ -22,7 +22,7 @@ if usuario:
                     if int(info['data'][4:7]) == int(dia[2]):
                         contador_emails += 1 
                         try:
-                            lista_vizualizar.append(analisar_email(key=GOOGLE_API_KEY,pergunta=f'Você está recebendo emails. Por favor, resuma as informações dos emails e apresente uma resposta com tom formal. seguem os emails {info['texto']}'))
+                            lista_vizualizar.append(analisar_email(key=GOOGLE_API_KEY,pergunta=f'Você está recebendo um email. Por favor, resuma as informações do email e apresente, de forma clara, uma resposta com tom formal.Faça a distinção objetiva entre o resumo do email, e sua sugestão de resposta. segue o email {info['texto']}'))
                         except:
                             contador_emails_nao_lidos +=1
                             lista_vizualizar_depois.append(info)
