@@ -29,7 +29,7 @@ if usuario:
             for remetente in detalhes(email = usuario,password = 'ibdlxbnrjwczltuo',host='imap.gmail.com',data=data):
                 dia = str(data).split('-')
                 data_remetente = remetente['data']
-                if int(dia) == int(data_remetente):
+                if int(dia[2]) == int(data_remetente[4:7]):
                     if remetente['remetente'] in lista_remetentes:
                         pass
                     else:
