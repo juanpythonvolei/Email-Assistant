@@ -89,5 +89,33 @@ def enviar_email(email,senha,destinatario,conteudo,assunto):
     servidor_email.quit()
 
 
+def carregar_emails_nao_lidos(host,email,password,data_informar):
+    lista_nao_lidos = []
+    with Imbox(host, username=email, password=password) as imbox:
+        mensagens = imbox.messages(date__gt=data_informar,unread=True)
+        for msg_tupla in mensagens:
+            try:
+                msg = msg_tupla[1]  # A segunda posição da tupla contém a mensagem
+                conteudo = msg.body["plain"][0]  # Conteúdo em texto simples
+                descricao = f'''Assunto: {msg.subject}\n
+                Remetente: {msg.sent_from[0]['email']}\n
+        Data: {msg.date}'''
+                texto  = f'''{descricao}\n
+    {conteudo}'''
+                if msg.attachments:
+                    lista_anexos_nao_lidos = []
+                    for anexo in msg.attachments:
+                        arquivo_nao_lido = anexo.get('filename')
+                        lista_anexos_nao_lidos.append(arquivo_nao_lido)
+                    dict_email_nao_lido = {'texto':texto,'data':msg.date,'anexo':arquivo_nao_lido}
+                else:
+                    dict_email_nao_lido = {'texto':texto,'data':msg.date}
 
-
+                if dict_email_nao_lido in lista_nao_lidos:
+                    pass
+                else:
+                    lista_nao_lidos.append(dict_email_nao_lido)
+            except:
+                pass
+        return lista_nao_lidos
+    
