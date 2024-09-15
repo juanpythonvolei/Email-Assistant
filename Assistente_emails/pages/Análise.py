@@ -67,7 +67,7 @@ if usuario:
                                 st.divider()
                             except:
                                     pass
-                      ver_anexo = st.popover('Vizualizar Anexos')
-                      with ver_anexo:
+                    ver_anexo = st.popover('Vizualizar Anexos')
+                    with ver_anexo:
                               baixar_emails(usuario)
                               
