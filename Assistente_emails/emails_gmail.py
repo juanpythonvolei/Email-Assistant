@@ -120,19 +120,16 @@ def carregar_emails_nao_lidos(host,email,password,data_informar):
                 pass
         return lista_nao_lidos
 
-def baixar_emails(arquivo):
+def baixar_emails(email):
         lista_anexos = []
         data_hoje = date.today()
-        meu_email = MailBox('imap.gmail.com').login(email, senha)
+        meu_email = MailBox('imap.gmail.com').login(email, st.secrets['EMAIl'])
         lista_emails = meu_email.fetch(AND(date=data_hoje))
-        
         for email in lista_emails:
             for anexo in email.attachments:
                 nome_arquivo = anexo.filename
                 conteudo_arquivo = anexo.payload
                 lista_anexos.append(conteudo_arquivo)
-                
-                    
         download = st.download_button(label="Faça o download do anexo aqui",data=arquivo,file_name=f"{arquivo}",mime="pdf")                                                                                            
         if download:
             payload in lista_Anexos:
