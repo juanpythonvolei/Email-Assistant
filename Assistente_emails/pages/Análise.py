@@ -43,11 +43,8 @@ if usuario:
                 st.metric(label='E-mails não carregados',value=contador_emails_nao_lidos)
             for resposta in list(set(lista_vizualizar)):
                 st.info(resposta)
-                try:
-                    resposta['anexo']
+                if  resposta['anexo']:
                     st.write(f'Possúi Anexo: {resposta['anexo']}')
-                except:
-                    pass
                 st.divider()
             sim = st.popover('Vizualizar E-mails não lidos')
             with sim:
