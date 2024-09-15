@@ -54,9 +54,7 @@ if usuario:
             lista_anexos = []    
             for resposta in list(set(lista_vizualizar)):
                 st.info(resposta)
-                ver_anexo = st.popover('Vizualizar Anexos')
-                with ver_anexo:
-                        baixar_emails(usuario)   
+                st.divider()
 
             if len(lista_vizualizar_depois) > 0:
                     sim = st.popover('Vizualizar E-mails não lidos')
@@ -70,5 +68,7 @@ if usuario:
                                 st.divider()
                             except:
                                     pass
-            
+            ver_anexo = st.popover('Vizualizar Anexos')
+            with ver_anexo:
+                        baixar_emails(usuario)   
                               
