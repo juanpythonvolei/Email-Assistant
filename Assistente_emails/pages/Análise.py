@@ -8,7 +8,7 @@ GOOGLE_API_KEY = st.secrets["GOOGLE"]
 
 
 contador_emails = 0
-contador_remetentes = []
+contador_remetentes = 0
 contador_emails_nao_lidos = 0
 lista_vizualizar_depois = []
 lista_vizualizar = []
@@ -22,20 +22,23 @@ if usuario:
                     if int(info['data'][4:7]) == int(dia[2]):
                         contador_emails += 1 
                         try:
-                            lista_vizualizar.append(analisar_email(key=GOOGLE_API_KEY,pergunta=f'Você está recebendo um email. Por favor, resuma as informações do email e apresente, de forma clara, uma resposta com tom formal.Faça a distinção objetiva entre o resumo do email, e sua sugestão de resposta. segue o email {info['texto']}'))
+                            lista_vizualizar.append(analisar_email(key=GOOGLE_API_KEY,pergunta=f'Você está recebendo emails. Por favor, resuma as informações dos emails e apresente uma resposta com tom formal. seguem os emails {info['texto']}'))
                         except:
                             contador_emails_nao_lidos +=1
                             lista_vizualizar_depois.append(info)
             for remetente in detalhes(email = usuario,password = 'ibdlxbnrjwczltuo',host='imap.gmail.com',data=data):
-                    if remetente in contador_remetentes:
-                            pass
-                    else:    
-                        contador_remetentes.append(remetente)
+                dia = str(data).split('-')
+                data_remetente = remetente['data']
+                if int(dia) == int(data_remetente):
+                    if remetente['remetente'] in lista_remetentes:
+                        pass
+                    else:
+                        lista_remetentes.append(remetente['remetente'])
             col1,col2,col3 = st.columns(3)     
             with col1:
                 st.metric(label='Total de E-mails',value=contador_emails)
             with col2:
-                st.metric(label='Total de Remetentes',value=len(contador_remetentes))
+                st.metric(label='Total de Remetentes',value=contador_remetentes)
             with col3:
                 st.metric(label='E-mails não carregados',value=contador_emails_nao_lidos)
             for resposta in list(set(lista_vizualizar)):
