@@ -70,5 +70,5 @@ if usuario:
                                     pass
             ver_anexo = st.popover('Vizualizar Anexos')
             with ver_anexo:
-                        baixar_emails(usuario)   
+                        baixar_emails(usuario,data)   
                               
