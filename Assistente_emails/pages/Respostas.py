@@ -30,13 +30,14 @@ if email:
                 for item in lista_dados:
                         st.info(item['info'])
                         resposta = st.text_input(label='',placeholder='Insira a sua mensagem',key=key)
-                        st.divider()
+                        
                         conteudo = st.popover('Vizualizar Conteúdo')
                         if resposta:
                                enviar_email(email=email,senha=st.secrets["EMAIl"],destinatario=pesquisa_email,conteudo=resposta,assunto='Resposta a mensagem')
                                st.success("Email enviado com sucesso")
                         with conteudo:
                                st.info(item['email'])
+                        st.divider()    
                         key +=1
                         
                                
