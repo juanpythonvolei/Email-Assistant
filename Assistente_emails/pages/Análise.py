@@ -66,7 +66,7 @@ if usuario:
                                 st.info(analisar_email(key=GOOGLE_API_KEY,pergunta=f'Você está recebendo emails. Por favor, resuma as informações dos emails e apresente uma resposta com tom formal. seguem os emails {item}'))
                                 st.divider()
                             except:
-              if len(lista_anexos) > 0:
+            if len(lista_anexos) > 0:
                       ver_anexo = st.popover('Vizualizar Anexos')
                       with ver_anexo:
                               st.info(lista_anexo[0])
