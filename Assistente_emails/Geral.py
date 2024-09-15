@@ -7,9 +7,9 @@ from analise_emails import analisar_email
 
 tab1,tab2 = st.tabs(['Email caixa de entrada','Não lidos'])
 with tab1:
-        usuario = st.text_input(label='',placeholder='Insira seu gmail')
+        usuario = st.text_input(label='',placeholder='Insira seu gmail',key = 'caixa de entrada')
         if usuario:
-                data = st.date_input(value=None,label='Insira uma data')
+                data = st.date_input(value=None,label='Insira uma data',key = 'data_caixa_de_entrada')
                 if data:
                         dia = str(data).split('-')
                         for info in carregar_emails(email = usuario,password = st.secrets["EMAIl"],host='imap.gmail.com',data_informar=data):
@@ -17,9 +17,9 @@ with tab1:
                                 st.info(info['texto'])
                                 st.divider()
 with tab2:
-        usuario = st.text_input(label='',placeholder='Insira seu gmail')
+        usuario = st.text_input(label='',placeholder='Insira seu gmail',key = 'email_nao_lido')
         if usuario:
-                data = st.date_input(value=None,label='Insira uma data')
+                data = st.date_input(value=None,label='Insira uma data',key = 'data_email_nao_lido')
                 if data:
                     dia = str(data).split('-')
                     for info in carregar_emails_nao_lidos(email = usuario,password = st.secrets["EMAIl"],host='imap.gmail.com',data_informar=data):
