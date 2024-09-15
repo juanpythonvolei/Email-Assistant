@@ -45,10 +45,11 @@ def detalhes(host,email,password,data):
                 msg = msg_tupla[1]  # A segunda posição da tupla contém a mensagem
                 conteudo = msg.body["plain"][0]  # Conteúdo em texto simples
                 remetente = msg.sent_from[0]['email']
-                if remetente in lista_detalhes:
+                dict_detalhes = {'remetente':remetente,'data':data}
+                if dict_detalhes in lista_detalhes:
                     pass
                 else:
-                    lista_detalhes.append(remetente)
+                    lista_detalhes.append(dict_detalhes)
             except:
                 pass
     return lista_detalhes
