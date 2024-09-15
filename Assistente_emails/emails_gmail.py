@@ -118,4 +118,12 @@ def carregar_emails_nao_lidos(host,email,password,data_informar):
             except:
                 pass
         return lista_nao_lidos
-    
+
+def baixar_emails(arquivo):
+    download = st.download_button(
+                            label="Faça o download do checklist no formato Excel",
+                            data=arquivo,
+                            file_name=f"{arquivo}",
+                            mime="pdf")                                                                                              )
+                            if download:
+                                st.success('Arquivo excel baixado com sucesso')
