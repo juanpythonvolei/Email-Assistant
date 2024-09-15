@@ -130,10 +130,10 @@ def baixar_emails(email):
                 nome_arquivo = anexo.filename
                 conteudo_arquivo = anexo.payload
                 tipo = anexo.content_type
-                lista_anexos.append(conteudo_arquivo)
+                lista_anexos.append({'conteudo':conteudo_arquivo,"nome":nome_arquivo})
         download = st.download_button(label="Faça o download do anexo aqui",data=arquivo,file_name=f"{nome_arquivo}",mime=f"{tipo}")                                                                                            
         if download:
             for payload in lista_Anexos:
-                with open(nome_arquivo, 'wb') as arquivo:
-                    arquivo.write(payload)
+                with open(payload['nome'], 'wb') as arquivo:
+                    arquivo.write(payload['conteudo'])
                 st.success('Arquivo excel baixado com sucesso')
