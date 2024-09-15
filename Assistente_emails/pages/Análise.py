@@ -55,16 +55,8 @@ if usuario:
             for resposta in list(set(lista_vizualizar)):
                 st.info(resposta)
                 ver_anexo = st.popover('Vizualizar Anexos')
-                for anexo in baixar_emails(usuario):
-                        if anexo in lista_anexos:
-                                pass
-                        else:
-                                lista_anexos.append(anexo)
                 with ver_anexo:
-                        download = st.download_button(label="Faça o download do anexo aqui",data=lambda file: for file[0]['conteudo'] in lista_anexos,file_name=f"{nome_arquivo}",mime=f"{tipo}")                                                                                            
-                        if download:
-                                st.success('Arquivo excel baixado com sucesso')
-                                st.divider()    
+                        baixar_emails(usuario)   
 
             if len(lista_vizualizar_depois) > 0:
                     sim = st.popover('Vizualizar E-mails não lidos')
