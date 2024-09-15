@@ -16,3 +16,4 @@ google-generativeai
 streamlit-option-menu
 streamlit-calendar
 streamlit_carousel
+distutils
