@@ -22,7 +22,8 @@ def carregar_emails(host,email,password,data_informar):
                 if len(msg.attachments) >0:
                     lista_anexos = []
                     for anexo in msg.attachments:
-                        arquivo = anexo.get('filename')
+                        with open(anexo.get('filename'),'wb') as arquivo:
+                            arquivo.write(anexo.get('content'))
                         lista_anexos.append(arquivo)
                     dict_email = {'texto':texto,'data':msg.date,'anexo':lista_anexos}
                 else:
@@ -120,6 +121,6 @@ def carregar_emails_nao_lidos(host,email,password,data_informar):
         return lista_nao_lidos
 
 def baixar_emails(arquivo):
-    download = st.download_button(label="Faça o download do checklist no formato Excel",data=arquivo,file_name=f"{arquivo}",mime="pdf")                                                                                            
+    download = st.download_button(label="Faça o download do anexo aqui",data=arquivo,file_name=f"{arquivo}",mime="pdf")                                                                                            
     if download:
             st.success('Arquivo excel baixado com sucesso')
