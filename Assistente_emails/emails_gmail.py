@@ -132,7 +132,7 @@ def baixar_emails(email):
                 tipo = anexo.content_type
                 lista_anexos.append({'conteudo':conteudo_arquivo,"nome":nome_arquivo})
         for item in lista_anexos:
-            download = st.download_button(label=f"Faça o download do anexo {item['nome']} aqui",data=lista_anexos[0:]['conteudo'],file_name=f"{nome_arquivo}",mime=f"{tipo}")                                                                                            
+            download = st.download_button(label=f"Faça o download do anexo {item['nome']} aqui",data=item['conteudo'],file_name=f"{nome_arquivo}",mime=f"{tipo}")                                                                                            
             if download:
                                 st.success('Arquivo excel baixado com sucesso')
                                 st.divider() 
