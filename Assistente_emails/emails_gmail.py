@@ -1,6 +1,10 @@
 from imbox import Imbox
 from datetime import datetime
 from imap_tools import MailBox, AND
+import smtplib
+from email.mime.text import MIMEText
+
+
 
 def carregar_emails(host,email,password,data_informar):
     lista = []
@@ -69,3 +73,20 @@ Assunto: {msg.subject}'''
             except:
                 pass
     return lista_remetentes_infos
+
+def enviar_email(email,senha,destinatario,conteudo,assunto):
+    servidor_email = smtplib.SMTP('smtp.gmail.com', 587) 
+    servidor_email.starttls()
+    servidor_email.login(email, senha)  
+    assunto = assunto
+    corpo = conteudo
+    mensagem = MIMEText(corpo)
+    mensagem['Subject'] = assunto
+    mensagem['From'] = email
+    mensagem['To'] = destinatario
+    servidor_email.send_message(mensagem)
+    servidor_email.quit()
+
+
+
+
