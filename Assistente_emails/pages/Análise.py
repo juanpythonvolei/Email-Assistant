@@ -51,12 +51,20 @@ if usuario:
                 st.metric(label='Total de Remetentes',value=len(contador_remetentes))
             with col3:
                 st.metric(label='E-mails não carregados',value=contador_emails_nao_lidos)
+            lista_anexos = []    
             for resposta in list(set(lista_vizualizar)):
                 st.info(resposta)
                 ver_anexo = st.popover('Vizualizar Anexos')
+                for anexo in baixar_emails(usuario):
+                        if anexo in lista_anexos:
+                                pass
+                        else:
+                                lista_anexos.append(anexo)
                 with ver_anexo:
-                              baixar_emails(usuario)    
-                st.divider()    
+                        download = st.download_button(label="Faça o download do anexo aqui",data=lambda file[0]['conteudo': for file in lista_anexos,file_name=f"{nome_arquivo}",mime=f"{tipo}")                                                                                            
+                        if download:
+                                st.success('Arquivo excel baixado com sucesso')
+                                st.divider()    
 
             if len(lista_vizualizar_depois) > 0:
                     sim = st.popover('Vizualizar E-mails não lidos')
