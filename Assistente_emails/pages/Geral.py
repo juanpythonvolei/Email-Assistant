@@ -1,3 +1,8 @@
+import streamlit as st 
+from emails_gmail import carregar_emails,detalhes,carregar_emails_nao_lidos
+from analise_emails import analisar_email
+
+
 tab1,tab2 = st.tabs(['Email caixa de entrada','Não lidos'])
 with tab1:
         usuario = st.text_input(label='',placeholder='Insira seu gmail',key = 'caixa de entrada')
