@@ -12,4 +12,5 @@ st.markdown("""
 login  = st.text_input(label='',placeholder='Insira seu usuário de login')
 senha = st.text_input(label='',placeholder='Insira sua senha')
 entrar = st.button('logar')
-
+if entrar:
+    st.switch_page('pages/Geral.py')
