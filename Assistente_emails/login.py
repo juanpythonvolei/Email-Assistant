@@ -5,7 +5,6 @@ import firebase_admin
 from firebase_admin import credentials, firestore,db
 import requests
 import os
-
 st.markdown("""
     <style>
        [aria-expanded='true'] {
@@ -42,5 +41,11 @@ with col1:
 with col2:
     criar_conta = st.button('Criar Conta')
 if entrar:
-    
+    requiscao = requests.get('https://bancodedadosroteirooficial-default-rtdb.firebaseio.com/.json')
+    data = requiscao.json()
+    for item in data:
+        if login == item:
+            senha = data[f'{item}']:
+                st.switch_page('pages/Geral.py')
+if criar_conta:
     st.switch_page('pages/Geral.py')
