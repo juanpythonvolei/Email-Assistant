@@ -49,4 +49,4 @@ if entrar:
             if senha == senha_comparar:
                 st.switch_page('pages/Geral.py')
 if criar_conta:
-    st.switch_page('pages/Geral.py')
+    st.switch_page('Criar_conta.py')
