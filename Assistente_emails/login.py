@@ -34,6 +34,11 @@ else:
     pass
 ref_login = db.reference('usuarios')
 login  = st.text_input(label='',placeholder='Insira seu usuário de login')
+if login:
+    if '@' in login:
+            pass
+    else:
+            st.error('Insira um email')
 senha = st.text_input(label='',placeholder='Insira sua senha')
 col1,col2,col3 = st.columns(3)
 with col1:
@@ -41,6 +46,7 @@ with col1:
 with col2:
     criar_conta = st.button('Criar Conta')
 if entrar:
+
     requiscao = requests.get('https://bancodedadosroteirooficial-default-rtdb.firebaseio.com/.json')
     data = requiscao.json()
     usuarios = data['usuario']
