@@ -5,7 +5,13 @@ import firebase_admin
 from firebase_admin import credentials, firestore,db
 import requests
 import os
-
+st.markdown("""
+    <style>
+       [aria-expanded='true'] {
+            display: none;
+        }
+    </style>
+""", unsafe_allow_html=True)
 criar_login = st.text_input('Insira um email')
 criar_senha = st.text_input('Criar Senha')
 col1,col2,col3 = st.columns(3)
