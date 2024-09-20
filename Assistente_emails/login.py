@@ -49,7 +49,7 @@ if entrar:
         senha2 =  usuarios[f'{item}']['senha']
         if email == login and senha == senha2:
             st.switch_page('pages/Geral.py')
-else:
-    st.error('Usuário ou senha incorretos, por favor, tente novamente ou crie uma conta')
+        else:
+            st.error('Usuário ou senha incorretos, por favor, tente novamente ou crie uma conta')
 if criar_conta:
     st.switch_page('pages/Criar_conta.py')
