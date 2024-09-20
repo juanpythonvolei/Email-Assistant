@@ -2,7 +2,7 @@ import streamlit as st
 from emails_gmail import carregar_emails,detalhes,carregar_emails_nao_lidos
 from analise_emails import analisar_email
 
-
+st.logo('https://www.logolynx.com/images/logolynx/fe/fe346f78d111e1d702b44186af59b568.jpeg')
 tab1,tab2 = st.tabs(['Email caixa de entrada','Não lidos'])
 with tab1:
         usuario = st.text_input(label='',placeholder='Insira seu gmail',key = 'caixa de entrada')
