@@ -39,6 +39,7 @@ if login:
             pass
     else:
             st.error('Insira um email')
+            login = None
 senha = st.text_input(label='',placeholder='Insira sua senha')
 col1,col2,col3 = st.columns(3)
 with col1:
