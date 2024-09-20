@@ -13,4 +13,6 @@ with col1:
   criar = st.button('Criar Conta')
 with col2:
   voltar = st.button('Voltar ao login')
-  
+if criar:
+  ref_criar_conta = db.reference('usuario')
+  ref_criar_conta.child(f'{criar_login}').set(f'{criar_senha}')
