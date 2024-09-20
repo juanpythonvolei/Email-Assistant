@@ -45,7 +45,7 @@ if entrar:
     data = requiscao.json()
     for item in data:
         if login == item:
-            senha_comparar = data[f'{item}']:
+            senha_comparar = data[f'{item}']
             if senha == senha_comparar:
                 st.switch_page('pages/Geral.py')
 if criar_conta:
