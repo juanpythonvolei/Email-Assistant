@@ -23,7 +23,7 @@ with col2:
 if criar:
   nome,servidor = str(criar_login).split('@')  
   ref_criar_conta = db.reference('usuario')
-  ref_criar_conta.child(f'{random.randint(10,10000)}/{str(nome)}').set({'usuario':criar_login,'senha':criar_senha})
+  ref_criar_conta.child(f'{str(nome)}').set({'usuario':criar_login,'senha':criar_senha})
   st.switch_page('pages/Geral.py')
 if voltar:
   st.switch_page('login.py')
