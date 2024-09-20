@@ -44,9 +44,9 @@ if entrar:
     requiscao = requests.get('https://bancodedadosroteirooficial-default-rtdb.firebaseio.com/.json')
     data = requiscao.json()
     for item in data:
-        if login == item:
-            senha_comparar = data[f'{item}']
-            if senha == senha_comparar:
-                st.switch_page('pages/Geral.py')
+        email = data[f'{item}']['usuario']
+        senha2 = data[f'{item}']['senha']
+        if email == login and senha == senha2:
+            st.switch_page('pages/Geral.py')
 if criar_conta:
     st.switch_page('pages/Criar_conta.py')
