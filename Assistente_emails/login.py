@@ -33,8 +33,14 @@ if not firebase_admin._apps:
     })
 else:
     pass
+ref_login = db.reference('usuarios')
 login  = st.text_input(label='',placeholder='Insira seu usuário de login')
 senha = st.text_input(label='',placeholder='Insira sua senha')
-entrar = st.button('logar')
+col1,col2,col3 = st.columns(3)
+with col1:
+    entrar = st.button('logar')
+with col2:
+    criar_conta = st.button('Criar Conta')
 if entrar:
+    
     st.switch_page('pages/Geral.py')
