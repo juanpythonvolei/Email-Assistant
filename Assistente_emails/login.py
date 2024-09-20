@@ -45,9 +45,9 @@ if entrar:
     data = requiscao.json()
     usuarios = data['usuario']
     for item in usuarios:
-        st.write(data[f'{item}'])
-        email = data[f'{item}']['usuario']
-        senha2 = data[f'{item}']['senha']
+        st.write( usuarios[f'{item}'])
+        email =  usuarios[f'{item}']['usuario']
+        senha2 =  usuarios[f'{item}']['senha']
         if email == login and senha == senha2:
             st.switch_page('pages/Geral.py')
 if criar_conta:
