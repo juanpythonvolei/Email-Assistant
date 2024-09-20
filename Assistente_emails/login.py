@@ -44,6 +44,7 @@ if entrar:
     requiscao = requests.get('https://bancodedadosroteirooficial-default-rtdb.firebaseio.com/.json')
     data = requiscao.json()
     for item in data:
+        st.write(data[f'{item}'])
         email = data[f'{item}']['usuario']
         senha2 = data[f'{item}']['senha']
         if email == login and senha == senha2:
