@@ -43,7 +43,8 @@ with col2:
 if entrar:
     requiscao = requests.get('https://bancodedadosroteirooficial-default-rtdb.firebaseio.com/.json')
     data = requiscao.json()
-    for item in data:
+    usuarios = data['usuario']
+    for item in usuarios:
         st.write(data[f'{item}'])
         email = data[f'{item}']['usuario']
         senha2 = data[f'{item}']['senha']
