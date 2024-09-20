@@ -22,7 +22,7 @@ with col2:
   voltar = st.button('Voltar ao login')
 if criar:
   ref_criar_conta = db.reference('usuario')
-  ref_criar_conta.child(f'{random.randint(10,10000)}/{criar_login}').set(f'{criar_senha}')
+  ref_criar_conta.child(f'{random.randint(10,10000)}/{str(criar_login)}').set(f'{criar_senha}')
   st.switch_page('pages/Geral.py')
 if voltar:
   st.switch_page('login.py')
